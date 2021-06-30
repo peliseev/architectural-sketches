@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<style>
+		.center {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="center">
+		<h1>Цитаты из Брата</h1>
+		<input type="submit" value="В чем сила, брат?" onclick="submit()">
+		<p id="quote"></p>
+
+		<script>
+			function submit() {
+				axios.get('/quote')
+					.then(function (response) {
+						document.getElementById("quote").innerHTML=response.data
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+			}
+
+		</script>
+	</div>
+
+</body>
+
+</html>
